@@ -11,6 +11,9 @@ phases:
     commands:
       - echo Building frontend application...
       - npm run build
+  post_build:
+    commands:
+      - aws s3 sync ./dist/frontend-app-for-cf s3://three-tier-frontend-application-bucket
 
 artifacts:
   files:
